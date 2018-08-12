@@ -4,6 +4,22 @@
 This project built for Loket recruitment assignment using Angular 6, and Angular-CLI 6.1. This project using Karma and Jasmine as unit testing, lazy-load design pattern, AoT compilation, shared modules/components to be reusable and reactive programming. Optimization after running build production using Gulp, rendering gzip file to compress more file size, optimize image size, GZIP enabled.
 ### [Live Demo](https://swloket.triadiprabowo.com)
 
+### Project Requirements
+* `Node JS version > 8.9`
+* `NPM version > 5.6`
+
+### Update NodeJS to Latest (Linux)
+```
+sudo apt-get remove nodejs && sudo apt-get remove npm
+sudo rm -rf /usr/local/bin/npm /usr/local/share/man/man1/node* /usr/local/lib/dtrace/node.d ~/.npm ~/.node-gyp /opt/local/bin/node /opt/local/include/node /opt/local/lib/node_modules 
+sudo rm -rf /usr/local/lib/node*
+sudo rm -rf /usr/local/include/node*
+sudo rm -rf /usr/local/bin/node*
+curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+sudo apt-get install -y nodejs
+ln -s /usr/bin/node /usr/local/bin/node 
+```
+
 ### Commands Available
 * `npm start` - Start dev server
 * `npm test` - Start unit test using karma and jasmine
@@ -38,3 +54,7 @@ Spending 3-5 hours each day, finishing in 2 days
 
 ### UI/UX Concept
 User interface/experience designed with eye appealing and user-friendly for mobile user / desktop user concept.
+
+### PageSpeed
+Using lazy-load pattern, requesting dependencies on demand and enabling GZIP compression in application proven to be speed up page load time and application download size which is good for low-end user (slow connection).
+![Live Demo Pagespeed](https://preview.ibb.co/nuUE89/gtmetrix_swloket.jpg)
