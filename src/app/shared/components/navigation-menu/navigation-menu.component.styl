@@ -1,0 +1,51 @@
+.navigation
+	position absolute
+	display block
+	top 15px
+	right 5%
+	
+	.nav__container
+		position relative
+		display block
+		overflow hidden
+		
+		ul
+			list-style-type none
+			display block
+			position relative
+			padding-left 0
+			
+			li
+				display inline-block
+				padding 15px 30px
+				box-sizing border-box
+				
+				a 
+					&:link
+						color #fff
+						text-decoration none 
+						font-size 1.55rem
+						font-weight bold
+						transition color 0.2s ease-in-out
+						text-shadow 1px 1px 2px #000
+					
+					&:visited
+						color #fff
+					
+					&:hover
+						color #35da6e
+
+@media only screen and (max-width: 800px)
+	.navigation
+		right 0
+		left 0
+		width 100%
+		text-align center
+		
+		.nav__container
+			ul
+				li
+					padding 15px 5px
+					a
+						&:link
+							font-size 1rem

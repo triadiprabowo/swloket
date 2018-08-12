@@ -1,0 +1,30 @@
+@import '../variables'
+
+.card
+	.card-title
+		font-weight bold
+		color $clr__title
+	
+	.card-text
+		font-size $font__size-sm
+		line-height 1.625em
+	
+	&.state--actionable
+		box-shadow 0 0 3px 1px rgba(0,0,0,0.065)
+		
+		.card-title
+			border-bottom 1px solid $clr__separator
+			padding-bottom $padding_px_xs
+			
+		.card-body
+			transition background-color .2s ease-in-out
+			
+			&:hover
+				cursor pointer
+				background-color $clr__light-solid
+			
+		.card-text
+			color $clr__content	
+			
+	&.mg--bottom-sm
+		margin-bottom $margin_px_sm

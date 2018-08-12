@@ -1,0 +1,65 @@
+<h2 mat-dialog-title>Character Detail</h2>
+
+<div mat-dialog-content>
+	<table class="table">
+		<tr>
+			<td>Name</td>
+			<td>{{$dialogData.people.name}}</td>
+		</tr>
+
+		<tr>
+			<td>Gender</td>
+			<td>{{$dialogData.people.gender}}</td>
+		</tr>
+
+		<tr>
+			<td>Birth Year</td>
+			<td>{{$dialogData.people.birth_year}}</td>
+		</tr>
+
+		<tr>
+			<td>Height</td>
+			<td>{{$dialogData.people.height}} cm</td>
+		</tr>
+
+		<tr>
+			<td>Weight</td>
+			<td>{{$dialogData.people.mass}} kg</td>
+		</tr>
+
+		<tr>
+			<td>Hair Color</td>
+			<td>{{$dialogData.people.hair_color}}</td>
+		</tr>
+
+		<tr>
+			<td>Skin Color</td>
+			<td>{{$dialogData.people.skin_color}}</td>
+		</tr>
+
+		<tr>
+			<td>Species</td>
+			<td>{{$vmService.detailSpecies? $vmService.detailSpecies.name : 'Fetching species data...'}}</td>
+		</tr>
+
+		<tr>
+			<td>Language</td>
+			<td>{{$vmService.detailSpecies? $vmService.detailSpecies.language : 'Fetching language data...'}}</td>
+		</tr>
+
+		<tr>
+			<td>Appeared in</td>
+			<td>
+				<ul>
+					<li *ngFor="let film of $dialogData.people.films">
+						<p>{{$dialogService.parseURLtoMovieTitle(film)}}</p>
+					</li>
+				</ul>
+			</td>
+		</tr>
+	</table>
+</div>
+
+<div mat-dialog-actions align="end">
+	<button class="btn btn-default" mat-dialog-close>Close</button>
+</div>

@@ -1,1 +1,66 @@
-<h1>Landing Component</h1>
+<!-- START: Header Element -->
+<header class="header">
+	<img src="/assets/logo.png" class="logo" />
+	<navigation-menu></navigation-menu>
+
+	<div class="headline pos--left">
+		<h1>The Angular Empire<br>Strikes Back</h1>
+		<p>Never coming soon, may the force be with you!</p>
+	</div>
+</header>
+<!-- END: Header Element -->
+
+<div class="wrapper type--outer">
+	<div class="container">
+		<div class="block">
+			<h1 class="title">Star Wars: Character Center</h1>
+		</div>
+
+		<!-- START: Filter element -->
+		<div class="row" *ngIf="$vm.films.length">
+			<div class="col-12">
+				<div class="form-group">
+					<label class="form-control-label">Filter Characters by Film:</label>
+					<select class="form-control" [(ngModel)]="searchFilterModel">
+						<option value="">No filter</option>
+						<option *ngFor="let list of $vm.films" [value]="list.url">{{list.title}}</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		<!-- END: Filter element -->
+
+		<!-- START: People list if data has been successfully fetched -->
+		<div class="row">			
+			<ng-container *ngIf="$vm.isFetched && $vm.people">
+				<div class="col-md-4 col-12" *ngFor="let list of $vm.people.results | filter: 'films': searchFilterModel" (click)="showDetailPeople(list)">
+					<div class="card state--actionable mg--bottom-sm">
+						<div class="card-body">
+							<div class="card-title">{{list.name}}</div>
+							<p class="card-text"><b>Appeared in:</b> 
+								<ng-container *ngIf="$vm.films.length">
+									<span *ngFor="let filmURI of list.films; let j=index;">{{service.parseURLtoMovieTitle(filmURI) + ((j+1 == list.films.length)? '': ', ')}}</span>
+								</ng-container>
+							</p>
+						</div>
+					</div>
+				</div>
+			</ng-container>
+
+			<ng-container *ngIf="$vm.isFetching">
+				<div class="col-12 align--center mg--bottom-sm mg--top-sm">
+					<h5>Please wait while fetching data..</h5>
+				</div>
+			</ng-container>
+		</div>
+		<!-- END: People list if data has been successfully fetched -->
+
+		<!-- START: Load more list of people element -->
+		<div class="row" *ngIf="$vm.isFetched && $vm.people && $vm.people.next">
+			<div class="col-12">
+				<button class="btn btn-success btn-block" (click)="service.fetchPeopleList($vm.people.next)" [hidden]="$vm.isFetching">Load More List</button>
+			</div>
+		</div>
+		<!-- END: Load more list of people element -->
+	</div>
+</div>
